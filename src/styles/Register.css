@@ -1,0 +1,15 @@
+
+.day-month-year-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 10px;
+}
+
+.day-month-year-container select {
+  width: 100%;
+  font-size: revert;
+  border-radius: 3px;
+  font-family: Arial, sans-serif; 
+  height: 36px;
+  border: 1px solid #ccc;
+}

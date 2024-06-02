@@ -1,0 +1,365 @@
+
+
+
+/*----------------------------------------------- style ForgotPassword ---------------------------------------------------------------*/
+
+.forgot-password-container {
+    flex: 1 1;
+    padding: 20px;
+    background-color: #f0f2f5;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.forgot-password-container h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.forgot-password-container p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.form-control {
+    margin-bottom: 20px;
+}
+
+.alert {
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    width: 100%;
+}
+
+.back-to-login {
+    margin-top: 10px;
+    text-align: center;
+    color: #007bff;
+}
+
+.back-to-login a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.back-to-login a:hover {
+    text-decoration: underline;
+}
+/*----------------------------------------------------------------------------------------------------------------------------------*/
+
+
+/*----------------------------------------------- style SearchResuts ---------------------------------------------------------------*/
+.bg-blue-500 {
+    background-color: #4299e1;
+  }
+  
+  .hover\:bg-blue-700:hover {
+    background-color: #2b6cb0;
+  }
+/*----------------------------------------------------------------------------------------------------------------------------------*/
+
+
+/*----------------------------------------------- style Register ---------------------------------------------------------------*/
+.day-month-year-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 10px;
+  }
+  
+  .day-month-year-container select {
+    width: 100%;
+    font-size: revert;
+    border-radius: 3px;
+    font-family: Arial, sans-serif; 
+    height: 36px;
+    border: 1px solid #ccc;
+  }
+  /*----------------------------------------------------------------------------------------------------------------------------------*/
+
+
+.follow-container{
+    padding: auto;
+
+}
+
+
+  /*----------------------------------------------------------------------------------------------------------------------------------*/
+  .pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+  }
+  
+  .pagination__item {
+    margin: 0 5px; /* Giảm khoảng cách giữa các mục phân trang */
+  }
+  
+  .pagination__link {
+    text-decoration: none;
+    color: #0d4ab3; /* Màu chữ xám nhạt */
+    padding: 4px 16px; /* Kích thước nút phân trang */
+    border: 1px solid #9cccfe; /* Viền màu xám nhạt */
+    border-radius: 50px; /* Bo góc hình tròn */
+    transition: all 0.3s ease-in-out; /* Hiệu ứng chuyển đổi */
+    height: 10px;
+    margin: 10px;
+  }
+  
+  .pagination__link:hover {
+    background-color: #f7fafc; /* Màu nền xám nhạt khi hover */
+    border-color: #506a8c; /* Màu viền xám nhạt khi hover */
+  }
+  
+  .pagination__link--active {
+    background-color: #5882e4; /* Màu nền xanh khi được chọn */
+    color: #fff; /* Màu chữ trắng khi được chọn */
+    border-color: #4299e1; /* Màu viền xanh khi được chọn */
+    border-radius: 50px; /* Bo góc hình tròn */
+    margin: 10px;
+  }
+
+
+
+  /* ----------------------------------------------------------------------------------------- */
+  
+  .button {
+    font-weight: bold;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    padding: 8px 16px;
+  }
+  
+  .button-blue {
+    background-color: blue;
+    color: white;
+  }
+  
+  .button-blue:hover {
+    background-color: darkblue;
+  }
+  
+  .button-red {
+    background-color: red;
+    color: white;
+  }
+  
+  .button-red:hover {
+    background-color: darkred;
+  }
+  
+
+
+
+
+
+  /* ----------------------------------------------------------------------------------------- */
+  
+  ._8icz {
+    align-items: center;
+    border-bottom: 1px solid #d1d1d2;
+    display: flex;
+    margin: 10px 16px 20px;
+    text-align: center;
+}
+
+
+
+  /* Thiết lập kiểu dáng của thanh cuộn */
+::-webkit-scrollbar {
+  width: 8px; /* Độ rộng của thanh cuộn */
+}
+
+/* Màu nền của thanh cuộn */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Màu của thanh cuộn */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px; /* Độ cong của các góc thanh cuộn */
+}
+
+/* Hover state của thanh cuộn */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+@media (min-width: 1035px) {
+  .lg\:ml-custom {
+    margin-left: 30%;
+  }
+}
+
+@media (min-width: 1035px) {
+  .lg\:ml-customs {
+    margin-left: 34%;
+    width: 40%;
+  }
+}
+
+  /* ----------------------------------------------------------------------------------------- */
+  @media (max-width: 768px) {
+    .ml-20 {
+      margin-left: 0;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .suggestion-list {
+      display: none;
+    }
+  }
+  
+
+  .show-comments {
+    transform: translateX(0%);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+
+  /* ----------------------------------------------------------------------------------------- */
+/* navright */
+/* Styles for the SuggestionList component */
+.suggestion-list {
+  margin-bottom: 20px;
+}
+
+.suggestion-list ul  {
+  list-style: none;
+  padding: 0;
+}
+
+.suggestion-list li {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.suggestion-list li:hover, .friend-list li:hover {
+  transform: scale(1.05);
+}
+
+.suggestion-list img, .friend-list img {
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.suggestion-list button, .friend-list button {
+  padding: 10px 15px;
+  border-radius: 30px;
+  background-color: #1e3a8a;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.suggestion-list button:disabled, .friend-list button:disabled {
+  background-color: #d1d5db;
+  cursor: not-allowed;
+}
+
+.button-blue {
+  background-color: #1e3a8a;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.suggestion-list h1, .friend-list h1 {
+  font-size: 1.5rem;
+}
+
+.suggestion-navbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.suggestion-navbar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+/* Additional styles for better UI */
+.suggestion-list .font-bold, .friend-list .font-bold {
+  font-weight: bold;
+}
+
+.suggestion-list .text-sm, .friend-list .text-sm {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+}
+
+.transition-transform {
+  transition: transform 0.3s;
+}
+
+.duration-300 {
+  transition-duration: 0.3s;
+}
+
+.shadow-lg {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.bg-white\/50 {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.backdrop-blur-lg {
+  backdrop-filter: blur(10px);
+}
+
+.border-gray-200 {
+  border-color: #e5e7eb;
+}
+
+.bg-gradient-to-r {
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+.from-blue-500 {
+  --tw-gradient-from: #3b82f6;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(59, 130, 246, 0));
+}
+
+.to-purple-500 {
+  --tw-gradient-to: #9333ea;
+}
+
+.bg-clip-text {
+  background-clip: text;
+}
+
+.text-transparent {
+  color: transparent;
+}
+
+
