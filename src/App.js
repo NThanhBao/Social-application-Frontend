@@ -1,7 +1,7 @@
-// file App.js
 
-import Pages from "./pages/Pages";
+import Pages from './pages/Pages';
 import { BrowserRouter } from "react-router-dom";
+
 
 function App() {
   return (

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import HomePage from './HomePage';
