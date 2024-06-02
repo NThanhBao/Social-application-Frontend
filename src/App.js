@@ -35,34 +35,35 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
-        <Route path="/search-results" element={<SearchPage />} />
-        <Route path="/followers-page" element={<FollowsPage />} />
-        <Route path="/profile-page" element={<ProfilePage />} />
-        <Route path="/profile/:userId" element={<ProfileUserPage />} />
-        <Route path="/error@404" element={<Error404 />} />
-        <Route path="/chat" element={<ChatMessagePage />} />
-        <Route path="/Dashboard" element={<Dashboard />} />
-        <Route path="/listUser" element={<ListUser />} />
-        <Route path="/email" element={<Email />} />
-        <Route path="/charts" element={<Charts />} />
+    // <BrowserRouter>
+    //   <Routes>
+    //     <Route path="/login" element={<LoginPage />} />
+    //     <Route path="/home" element={<HomePage />} />
+    //     <Route path="/register" element={<RegisterPage />} />
+    //     <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
+    //     <Route path="/search-results" element={<SearchPage />} />
+    //     <Route path="/followers-page" element={<FollowsPage />} />
+    //     <Route path="/profile-page" element={<ProfilePage />} />
+    //     <Route path="/profile/:userId" element={<ProfileUserPage />} />
+    //     <Route path="/error@404" element={<Error404 />} />
+    //     <Route path="/chat" element={<ChatMessagePage />} />
+    //     <Route path="/Dashboard" element={<Dashboard />} />
+    //     <Route path="/listUser" element={<ListUser />} />
+    //     <Route path="/email" element={<Email />} />
+    //     <Route path="/charts" element={<Charts />} />
 
-        {isLoggedIn ? (
-          userRole === 'ADMIN' ? (
-            <Route path="/" element={<Navigate to="/Dashboard" replace={true} />} />
-          ) : (
-            <Route path="/" element={<Navigate to="/home" replace={true} />} />
-          )
-        ) : (
-          <Route path="/" element={<Navigate to="/login" replace={true} />} />
-        )}
-      </Routes>
-    </BrowserRouter>
+    //     {isLoggedIn ? (
+    //       userRole === 'ADMIN' ? (
+    //         <Route path="/" element={<Navigate to="/Dashboard" replace={true} />} />
+    //       ) : (
+    //         <Route path="/" element={<Navigate to="/home" replace={true} />} />
+    //       )
+    //     ) : (
+    //       <Route path="/" element={<Navigate to="/login" replace={true} />} />
+    //     )}
+    //   </Routes>
+    // </BrowserRouter>
+    <LoginPage/>
   );
 }
 
