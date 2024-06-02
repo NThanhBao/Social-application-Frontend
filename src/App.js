@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
+import LoginForm from './components/auth/Login/index';
 import RegisterPage from './pages/RegisterPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import SearchPage from './pages/SearchPage';
@@ -63,7 +64,7 @@ function App() {
     //     )}
     //   </Routes>
     // </BrowserRouter>
-    <LoginPage/>
+    <LoginForm/>
   );
 }
 
