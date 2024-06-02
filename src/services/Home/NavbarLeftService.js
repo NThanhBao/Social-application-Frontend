@@ -16,9 +16,9 @@ const NavbarService = () => {
         if (accessToken) {
             setToken(accessToken);
         }
-        else{
-            window.location.href = '/login';
-        }
+        // else{
+        //     window.location.href = '/login';
+        // }
     }, []);
 
     useEffect(() => {

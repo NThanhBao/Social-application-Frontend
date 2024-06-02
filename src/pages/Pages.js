@@ -17,9 +17,28 @@ import Email from './PageAdmin/ListEmail';
 import Charts from './PageAdmin/Charts';
 
 function Pages() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAuthChecked, setIsAuthChecked] = useState(false);
+
+  useEffect(() => {
+      const token = localStorage.getItem('token');
+
+      if (token) {
+          setIsLoggedIn(true);
+      } else {
+          setIsLoggedIn(false);
+      }
+      setIsAuthChecked(true);
+  }, []);
+
+  if (!isAuthChecked) {
+      return null;
+  }
 
   return (
       <Routes>
+        {isLoggedIn && <Route path="/" element={<Navigate to="/home" replace />} />}
+        {!isLoggedIn && <Route path="*" element={<Navigate to="/login" replace />} />}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/register" element={<RegisterPage />} />
@@ -34,8 +53,6 @@ function Pages() {
         <Route path="/listUser" element={<ListUser />} />
         <Route path="/email" element={<Email />} />
         <Route path="/charts" element={<Charts />} />
-
-        <Route path="/" element={<Navigate to="/login" replace={true} />} />
       </Routes>
   );
 }
