@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { Url } from '../Constants';
 
 export const RegisterService = async (formData) => {
     try {
-        const response = await axios.post('/auth/register', formData);
+        const response = await axios.post(`${Url}/auth/register`, formData);
         return response.data;
     } catch (error) {
         throw error.response.data;

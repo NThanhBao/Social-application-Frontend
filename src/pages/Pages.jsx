@@ -47,7 +47,7 @@ function Pages() {
         <Route path="/profile-page" element={<ProfilePage />} />
         <Route path="/profile/:userId" element={<ProfileUserPage />} />
         <Route path="/error@404" element={<Error404 />} />
-        <Route path="/chat" element={<ChatMessagePage />} />
+        {/* <Route path="/chat" element={<ChatMessagePage />} /> */}
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/listUser" element={<ListUser />} />
         <Route path="/email" element={<Email />} />

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { Url } from '../Constants';
 
 const LoginService = () => {
     const [formData, setFormData] = useState({
@@ -27,7 +28,7 @@ const LoginService = () => {
         }
 
         try {
-            const response = await axios.post('/auth/login', formData);
+            const response = await axios.post(`${Url}/auth/login`, formData);
             const { token, userInfo } = response.data;
             const { role } = userInfo;
 

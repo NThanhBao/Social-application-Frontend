@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Url } from './Constants';
 
 export const fetchFollowingUsers = async () => {
     try {
@@ -7,7 +8,7 @@ export const fetchFollowingUsers = async () => {
             Authorization: 'Bearer ' + localStorage.getItem('accessToken') 
         };
 
-        const response = await axios.get('/auth/ListUsers/following', { headers });
+        const response = await axios.get(`${Url}/auth/ListUsers/following`, { headers });
         const followingUsers = response.data.map(user => user.id);
         const status = {};
         followingUsers.forEach(id => {

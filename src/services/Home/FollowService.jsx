@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Url } from '../Constants';
 
 const FollowService = () => {
     const [users, setUsers] = useState([]);
@@ -19,14 +20,14 @@ const FollowService = () => {
                     return;
                 }
 
-                const followingResponse = await axios.get('/auth/ListUsers/following', {
+                const followingResponse = await axios.get(`${Url}/auth/ListUsers/following`, {
                     headers: {
                         Authorization: `Bearer ${accessToken}`
                     }
                 });
                 setUsers(followingResponse.data);
 
-                const followersResponse = await axios.get('/auth/ListUsers/follower', {
+                const followersResponse = await axios.get(`${Url}/auth/ListUsers/follower`, {
                     headers: {
                         Authorization: `Bearer ${accessToken}`
                     }
@@ -49,7 +50,7 @@ const FollowService = () => {
                 return;
             }
 
-            await axios.delete(`/auth/unfollow/${id}`, {
+            await axios.delete(`${Url}/auth/unfollow/${id}`, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 }

@@ -1,11 +1,12 @@
 import axios from 'axios';
+import { Url } from '../Constants';
 
 export const sendEmail = async (email) => {
     try {
         const formData = new FormData();
         formData.append('email', email);
 
-        const response = await axios.post('http://localhost:8083/reset-password/send-mail', formData);
+        const response = await axios.post(`${Url}/reset-password/send-mail`, formData);
         if (response.status === 200) {
             return response.data;
         } else {

@@ -1,8 +1,7 @@
 // NavbarLogic.js
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { avatarBaseUrl } from '../Constants';
-
+import { avatarBaseUrl , Url } from '../Constants';
 const NavbarService = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [token, setToken] = useState('');
@@ -35,7 +34,7 @@ const NavbarService = () => {
                 }
             };
 
-            const response = await axios.get(`/auth/search?fullName=${searchQuery}`, config);
+            const response = await axios.get(`${Url}/auth/search?fullName=${searchQuery}`, config);
             localStorage.setItem('searchResult', JSON.stringify(response.data));
             window.location.href = '/search-results';
         } catch (error) {
@@ -65,7 +64,7 @@ const NavbarService = () => {
                 }
             };
 
-            const response = await axios.get('/auth/profile', config);
+            const response = await axios.get('http://localhost:8083/auth/profile', config);
             const { firstName, lastName, avatar } = response.data;
             setFirstName(firstName);
             setLastName(lastName);

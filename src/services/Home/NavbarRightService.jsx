@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Url } from '../Constants';
 
 // Hàm xử lý khi người dùng click vào nút Follow
 export const handleFollowUser = async (followingUserId, setIsLoading, fetchUnfollowedUsers, setUnfollowedUsers) => {
@@ -10,7 +11,7 @@ export const handleFollowUser = async (followingUserId, setIsLoading, fetchUnfol
                 'Authorization': `Bearer ${token}`
             }
         };
-        await axios.post(`/auth/follow/${followingUserId}`, {}, config);
+        await axios.post(`${Url}/auth/follow/${followingUserId}`, {}, config);
         // Sau khi gửi yêu cầu theo dõi thành công, cập nhật lại danh sách người dùng
         await fetchUnfollowedUsers(setUnfollowedUsers); // Đảm bảo bạn đã truyền hàm setUnfollowedUsers vào đây
     } catch (error) {
@@ -29,7 +30,7 @@ export const fetchUnfollowedUsers = async (setUnfollowedUsers) => {
                 'Authorization': `Bearer ${token}`
             }
         };
-        const response = await axios.get('/auth/ListUsers/unfollowed', config);
+        const response = await axios.get(`${Url}/auth/ListUsers/unfollowed`, config);
         setUnfollowedUsers(response.data);
     } catch (error) {
         console.error('Error fetching unfollowed users:', error);
