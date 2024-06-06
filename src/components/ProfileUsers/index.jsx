@@ -251,7 +251,6 @@ function ProfileUser() {
         const formattedAvatar = avatar.startsWith(avatarBaseUrl) ? avatar : `${avatarBaseUrl}${avatar}`;
         setAvatarUrl(formattedAvatar);
         setUserInfo(response.data);
-        console.error('Error fetching user posts:', response.data.id);
       } catch (error) {
         setError(error.response.data);
       }

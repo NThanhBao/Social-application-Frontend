@@ -51,7 +51,6 @@ function Profile() {
                     headers: { Authorization: `Bearer ${accessToken}` }
                 });
                 setUserInfo(response.data);
-                console.error('Error fetching user posts:', response.data.id);
             } catch (error) {
                 setError(error.response.data);
             } finally {

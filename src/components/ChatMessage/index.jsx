@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import WebSocketService from '../../services/WebSocketService';
 import axios from 'axios'; // Import axios for HTTP requests
+import './styles.css'; // Import CSS file for styling
 
 const ChatComponent = () => {
     const [isConnected, setIsConnected] = useState(false);
@@ -39,7 +40,7 @@ const ChatComponent = () => {
             WebSocketService.sendMessage(message); // Send message via WebSocket
 
             // Save message to database via HTTP POST request
-            axios.post( message)
+            axios.post('http://your-api-url/messages', message)
                 .then(response => {
                     console.log('Message saved to database:', response.data);
                 })
@@ -70,27 +71,39 @@ const ChatComponent = () => {
     };
 
     return (
-        <div>
-            <div>
+        <div className="chat-container">
+            <div className="chat-header">
+                <h2>Messages Chat</h2>
+            </div>
+            <div className="chat-messages">
                 {messages.map((msg, index) => (
-                    <div key={index}>
-                        <p>{msg.sender}: {msg.content}</p>
+                    <div key={index} className={`message ${msg.sender === username ? 'sent' : 'received'}`}>
+                        <div className="message-info">
+                            {msg.sender === username ? 'You' : msg.sender}
+                        </div>
+                        <div className="message-content">
+                            <p>{msg.content}</p>
+                        </div>
                     </div>
                 ))}
             </div>
-            <input
-                type="text"
-                value={messageInput}
-                onChange={(e) => setMessageInput(e.target.value)}
-                placeholder="Type your message..."
-            />
-            <button onClick={sendMessage} disabled={!isConnected}>Send</button>
-            <input
-                type="text"
-                value={username}
-                onChange={handleUsernameChange}
-                placeholder="Your username"
-            />
+            <div className="chat-input">
+                <input
+                    type="text"
+                    value={messageInput}
+                    onChange={(e) => setMessageInput(e.target.value)}
+                    placeholder="Nhập tin nhắn..."
+                />
+                <button onClick={sendMessage} disabled={!isConnected}>Gửi</button>
+            </div>
+            <div className="chat-username">
+                <input
+                    type="text"
+                    value={username}
+                    onChange={handleUsernameChange}
+                    placeholder="Tên của bạn"
+                />
+            </div>
         </div>
     );
 };
