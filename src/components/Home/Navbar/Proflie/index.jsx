@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { avatarBaseUrl } from '../../../../services/Constants';
+import { avatarBaseUrl, Url } from '../../../../services/Constants';
 function Profile() {
     const [userInfo, setUserInfo] = useState(null);
     const [error, setError] = useState(null);
