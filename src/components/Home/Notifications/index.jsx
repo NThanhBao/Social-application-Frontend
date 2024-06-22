@@ -69,13 +69,13 @@ function Notifications() {
                                         <div className="flex flex-col flex-grow">
                                             <div className="justify-between mb-1">
                                                 {notification.createBy && (
-                                                    <Link to={`/profile/${notification.createBy.id}`} className="text-blue-500 hover:underline">
+                                                    <Link className="text-blue-500 hover:underline">
                                                         <p className="text-sm font-semibold">{notification.createBy.firstName} {notification.createBy.lastName}</p>
                                                     </Link>
                                                 )}
                                                 <p className="text-xs text-gray-600">
                                                     {notification.type === 'comment' ? 'commented' : notification.type === 'reactionPost' ? 'liked' : 'liked on your comment'} on your post {formatDistanceToNow(new Date(notification.createAt), { addSuffix: true })}
-                                                </p>
+                                                </p> 
                                             </div>
                                             {notification.type === 'comment' && (
                                                 <>

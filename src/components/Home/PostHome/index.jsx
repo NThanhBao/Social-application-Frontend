@@ -340,7 +340,7 @@ const PostForm = () => {
                     <div key={index} className="max-w-3xl mx-auto bg-gray-100 mb-8 rounded-md relative">
                         <div className='flex justify-between rounded-t-md pt-4 pl-4 pr-4 bg-gray-200'>
                             <div>
-                                <Link to={`/profile/${post.userId.id}`} className="flex items-center mb-3">
+                                <Link className="flex items-center mb-3">
                                     <img src={`${avatarBaseUrl}${post.userId.avatar}`} alt="Avatar" className="w-12 h-12 rounded-full mr-2 shadow-lg" />
                                     <div>
                                         <p className="text-sm font-medium">{post.userId.firstName} {post.userId.lastName}</p>
