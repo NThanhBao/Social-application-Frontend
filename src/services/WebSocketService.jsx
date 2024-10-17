@@ -34,7 +34,7 @@ const WebSocketService = {
 
     sendMessage(message) {
         if (this.isConnected && message.room) {
-            this.stompClient.send(`/app/chat.sendMessage`, {}, message); // Send JSON directly
+            this.stompClient.send(`/app/chat.sendMessage`, {}, JSON.stringify(message));
         } else {
             console.log('Cannot send message:', { isConnected: this.isConnected, message });
         }
@@ -42,7 +42,7 @@ const WebSocketService = {
 
     sendPrivateMessage(recipient, message) {
         if (this.isConnected && recipient) {
-            this.stompClient.send(`/app/chat.privateMessage.${recipient}`, {}, message); // Send JSON directly
+            this.stompClient.send(`/app/chat.privateMessage`, {}, JSON.stringify(message));
         } else {
             console.log('Cannot send private message:', { isConnected: this.isConnected, recipient });
         }

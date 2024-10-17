@@ -1,28 +1,18 @@
 /* Container */
 .chat-container {
     display: flex;
-    height: 100vh;
+    height: 111vh;
     background-color: #f0f2f5;
 }
 
 /* Sidebar */
 .chat-sidebar {
     width: 300px;
-    background-color: #e9eff3;
-    border-right: 1px solid #ccc;
-    padding: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-right: 1px solid #ddd;
 }
 
-.search-input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    outline: none;
-}
 
 /* Chat List */
 .chat-list {
@@ -31,9 +21,24 @@
     margin: 0;
 }
 
-.chat-item {
+.chat-list li {
     display: flex;
     align-items: center;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.chat-list li.active,
+.chat-list li:hover {
+    background-color: #e6e6ff;
+}
+
+.chat-item {    
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
     padding: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -45,10 +50,10 @@
 }
 
 .chat-avatar {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 15px;
 }
 
 .chat-info {
@@ -57,11 +62,18 @@
 
 .chat-info span {
     display: block;
+    font-size: 14px;
+    color: #333;
+}
+.chat-info .last-message {
+    font-size: 12px;
+    color: #888;
 }
 
-.last-message {
-    font-size: 12px;
-    color: #555;
+.no-friends {
+    font-size: 16px;
+    color: #888;
+    margin-top: 20px;
 }
 
 /* Main Chat Area */
@@ -79,9 +91,11 @@
 }
 
 h2 {
-    font-size: xx-large;
     text-align: center;
-    color: #1877f2;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
 }
 
 .warning-message {
@@ -155,9 +169,7 @@ h2 {
 
 /* User Info */
 .chat-info {
-    width: 10px; /* Check if this is necessary */
     padding: 10px;
-    background-color: #e9eff3;
     border-left: 1px solid #ccc;
 }
 
@@ -169,32 +181,43 @@ h2 {
     color: #333;
 }
 
+.chat-info p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+}
+
 /* User Profile */
-.user-info {
+.chat-infomation {
     padding: 20px;
     border-left: 1px solid #ccc;
-    width: 300px;
+    width: 400px; 
     display: flex;
     flex-direction: column;
-    align-items: center;
     background-color: #e9eff3;
 }
 
-.user-avatar {
+.avatar-chat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar {
     width: 80px;
     height: 80px;
     border-radius: 50%;
     margin-bottom: 10px;
-    border: 3px solid rgb(255, 255, 255);
+    border: 3px solid #fff;
 }
 
-.user-info h3 {
+.chat-infomation h3 {
     margin: 0;
     font-size: 1.5em;
     color: #000;
+    text-align: center;
 }
 
-.user-info p {
+.chat-infomation p {
     margin: 5px 0;
     text-align: center;
     color: #000;
@@ -203,6 +226,8 @@ h2 {
 /* Icons */
 .icons {
     display: flex;
+    justify-content: center;
+    align-items: center;     
 }
 
 .icon {
@@ -211,6 +236,7 @@ h2 {
     fill: rgb(0, 0, 0);
     cursor: pointer;
     margin: 10px 30px 0;
+    text-align: center;
 }
 
 .icon:hover {
@@ -219,11 +245,60 @@ h2 {
 
 /* Search Input (Duplicated in .chat-sidebar) */
 .search-input {
-    padding: 5px;
-    margin-right: 10px;
-    border: none;
-    border-radius: 4px;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
     outline: none;
-    background-color: #fff;
-    width: 120px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+.search-input:focus {
+    border-color: #6c63ff;
+    box-shadow: 0px 4px 10px rgba(108, 99, 255, 0.3);
+}
+
+/* Section for each menu item */
+.section {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.section p {
+    margin: 0;
+    font-size: 20px;
+    color: #000;
+}
+
+.section svg {
+    width: 16px;
+    height: 16px;
+    fill: #000;
+    cursor: pointer;
+}
+
+.section:hover p {
+    color: #1877f2;
+}
+
+.section:hover svg {
+    fill: #1877f2;
+}
+
+
+/* -----------------------------ChatComponent----------------------------- */
+/* ChatMessages */
+.message-time {
+    font-size: 0.8em;
+    color: gray;
+    margin-top: 5px;
+}
+
+
+
+/* ----------------------------------------------------------------------- */

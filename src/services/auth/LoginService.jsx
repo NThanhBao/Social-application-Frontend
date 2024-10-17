@@ -30,12 +30,12 @@ const LoginService = () => {
         try {
             const response = await axios.post(`${Url}/auth/login`, formData);
             const { token, userInfo } = response.data;
-            const { role } = userInfo;
+            const { role, id } = userInfo; 
 
             // Lưu token và role vào localStorage
             localStorage.setItem('accessToken', token);
             localStorage.setItem('userRole', role);
-
+            localStorage.setItem('userId', id);
             setShowModal(true);
         } catch (error) {
             if (error.response && error.response.status === 401) {
