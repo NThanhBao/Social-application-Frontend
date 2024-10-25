@@ -1,11 +1,13 @@
 import React from 'react';
 import { avatarBaseUrl } from '../../../services/Constants';
+import '../styles.css'; // Import CSS
 
 const ChatInformation = ({ selectedFriend, toggleNotification, isNotificationEnabled }) => {
     return (
-        <div className="chat-infomation">
+        <div className="chat-information">
             {selectedFriend && (
                 <>
+                    <div className='information'>
                     <div className='avatar-chat'>
                         <img
                             src={`${avatarBaseUrl}${selectedFriend.avatar}`}
@@ -15,6 +17,7 @@ const ChatInformation = ({ selectedFriend, toggleNotification, isNotificationEna
                     </div>
                     <h3>{`${selectedFriend.firstName} ${selectedFriend.lastName}`}</h3>
                     <p>{selectedFriend.username}</p>
+                    </div>
 
                     <div className='icons'>
                         {/* Notification Icon */}
@@ -43,32 +46,24 @@ const ChatInformation = ({ selectedFriend, toggleNotification, isNotificationEna
                         </div>
                     </div>
 
-                    {/* Additional sections similar to the image */}
-                    <div>
-                        <div className="section">
-                            <p>Thông tin về đoạn chat</p>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-                            </svg>
-                        </div>
-                        <div className="section">
-                            <p>Tùy chỉnh đoạn chat</p>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-                            </svg>
-                        </div>
-                        <div className="section">
-                            <p>File phương tiện, file và liên kết</p>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-                            </svg>
-                        </div>
-                        <div className="section">
-                            <p>Quyền riêng tư & hỗ trợ</p>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-                            </svg>
-                        </div>
+                    {/* Additional sections */}
+                    <div className="section">
+                        <p>Thông tin về đoạn chat</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
+                        </svg>
+                    </div>
+                    <div className="section">
+                        <p>Tùy chỉnh đoạn chat</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
+                        </svg>
+                    </div>
+                    <div className="section">
+                        <p>File phương tiện, file và liên kết</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
+                        </svg>
                     </div>
                 </>
             )}

@@ -1,88 +1,45 @@
-import Stomp from 'stompjs';
 import SockJS from 'sockjs-client';
+import Stomp from 'stompjs';
 
-const WebSocketService = {
-    stompClient: null,
-    subscriptions: {},
-    isConnected: false,
+// Kết nối WebSocket
+export const connectWebSocket = (userId, onMessageReceived, onConnect, onError) => {
+    const socket = new SockJS('http://localhost:8083/ws');
+    const stompClient = Stomp.over(socket);
 
-    connect(callback) {
-        const socket = new SockJS('http://localhost:8083/ws');
-        this.stompClient = Stomp.over(socket);
+    stompClient.connect({}, frame => {
+        console.log('Connected: ' + frame);
 
-        this.stompClient.connect({}, (frame) => {
-            console.log('Connected: ' + frame);
-            this.isConnected = true;
-            if (callback) callback(); // Call the callback if provided
-        }, (error) => {
-            console.error('Connection error: ' + error);
+        // Lắng nghe tin nhắn cho user
+        stompClient.subscribe(`/topic/messages/${userId}`, message => {
+            const newMessage = JSON.parse(message.body);
+            onMessageReceived(newMessage);
         });
-    },
 
-    disconnect() {
-        if (this.stompClient && this.isConnected) {
-            Object.values(this.subscriptions).forEach(subscription => {
-                this.stompClient.unsubscribe(subscription.id);
-            });
-            this.stompClient.disconnect(() => {
-                console.log("Disconnected");
-                this.isConnected = false;
-                this.subscriptions = {};
-            });
-        }
-    },
+        // Gọi callback khi kết nối thành công
+        if (onConnect) onConnect(stompClient);
+    }, error => {
+        console.error('Error connecting to WebSocket:', error);
 
-    sendMessage(message) {
-        if (this.isConnected && message.room) {
-            this.stompClient.send(`/app/chat.sendMessage`, {}, JSON.stringify(message));
-        } else {
-            console.log('Cannot send message:', { isConnected: this.isConnected, message });
-        }
-    },
+        // Gọi callback khi có lỗi
+        if (onError) onError();
+    });
 
-    sendPrivateMessage(recipient, message) {
-        if (this.isConnected && recipient) {
-            this.stompClient.send(`/app/chat.privateMessage`, {}, JSON.stringify(message));
-        } else {
-            console.log('Cannot send private message:', { isConnected: this.isConnected, recipient });
-        }
-    },
-
-    subscribeToRoom(room, callback) {
-        if (this.isConnected && room) {
-            const subscription = this.stompClient.subscribe(`/topic/${room}`, callback);
-            this.subscriptions[room] = subscription;
-            console.log(`Subscribed to room: ${room}`);
-        } else {
-            console.log(`Cannot subscribe to room: ${room}, isConnected: ${this.isConnected}`);
-        }
-    },
-
-    subscribeToPrivateMessage(recipient, callback) {
-        if (this.isConnected && recipient) {
-            const subscription = this.stompClient.subscribe(`/user/${recipient}/private`, callback);
-            this.subscriptions[recipient] = subscription;
-            console.log(`Subscribed to private messages for user: ${recipient}`);
-        } else {
-            console.log(`Cannot subscribe to private messages for user: ${recipient}, isConnected: ${this.isConnected}`);
-        }
-    },
-
-    unsubscribeFromRoom(room) {
-        if (this.isConnected && this.subscriptions[room]) {
-            this.stompClient.unsubscribe(this.subscriptions[room].id);
-            delete this.subscriptions[room];
-            console.log(`Unsubscribed from room: ${room}`);
-        }
-    },
-
-    unsubscribeFromPrivateMessage(recipient) {
-        if (this.isConnected && this.subscriptions[recipient]) {
-            this.stompClient.unsubscribe(this.subscriptions[recipient].id);
-            delete this.subscriptions[recipient];
-            console.log(`Unsubscribed from private messages for user: ${recipient}`);
-        }
-    }
+    return stompClient;
 };
 
-export default WebSocketService;
+// Gửi tin nhắn
+export const sendMessage = (stompClient, userId, recipientId, content) => {
+    if (stompClient && stompClient.connected && recipientId) {
+        const message = {
+            sender: userId,
+            recipient: recipientId,
+            content: content,
+            type: 'CHAT',
+        };
+
+        stompClient.send(`/app/chat/${recipientId}`, {}, JSON.stringify(message));
+        return { ...message, lastName: 'You' };
+    }
+    console.warn('Cannot send message, stompClient is not connected or recipientId is not set', stompClient);
+    return null;
+};

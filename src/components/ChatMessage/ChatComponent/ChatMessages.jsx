@@ -1,49 +1,74 @@
-import React, { useEffect, useRef } from 'react';
+// ChatMessages.jsx phần hiển thị tin nhắn 
+
+import React, { useRef, useEffect } from 'react';
+import { avatarBaseUrl } from '../../../services/Constants';
 import '../styles.css';
 
-const ChatMessages = ({ messages, sendMessage, messageInput, setMessageInput, selectedUser, isConnected }) => {
-    const userId = localStorage.getItem('userId'); // Lấy ID người dùng từ localStorage
-    const messagesEndRef = useRef(null); // Ref để cuộn đến tin nhắn mới
+const ChatMessages = ({ messages, content, setContent, sendMessage, userId, selectedFriend }) => {
+    const messagesEndRef = useRef(null);
 
-    // Hàm cuộn đến cuối danh sách tin nhắn
     const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
     useEffect(() => {
-        scrollToBottom(); // Cuộn xuống dưới mỗi khi messages thay đổi
+        scrollToBottom(); 
     }, [messages]);
 
     return (
         <div className="chat-main">
             <div className="chat-header">
-                <h2>{selectedUser || 'Select a friend to start chatting'}</h2>
-                {!selectedUser && <p className="warning-message">Please select a friend to start chatting!</p>}
+                {selectedFriend ? ( 
+                    <>
+                        <img
+                            src={`${avatarBaseUrl}${selectedFriend.avatar}`}
+                            alt={`${selectedFriend.firstName} ${selectedFriend.lastName}`}
+                            className="header-avatar"
+                        />
+                        <div className="header-info">
+                            <h2>{selectedFriend.firstName} {selectedFriend.lastName}</h2>
+                            <p className="status-text">Đang hoạt động</p> 
+                        </div>
+                    </>
+                ) : (
+                    <div className="no-friend-message">
+                        <h2>Chọn một người bạn để trò chuyện</h2> 
+                    </div>
+                )}
             </div>
-            <div className="chat-messages">
+            <ul className="message-list">
                 {messages.map((msg, index) => (
-                    <div key={index} className={`message ${msg.sender === userId ? 'sent' : 'received'}`}>
+                    <li key={index} className={msg.sender === userId ? 'sent' : 'received'}>
                         <div className="message-bubble">
+                            {/* <p className="message-sender">
+                                {msg.sender === userId
+                                    ? 'You'
+                                    : selectedFriend ? `${selectedFriend.firstName} ${selectedFriend.lastName}` : 'Người gửi'}
+                            </p> */}
                             <p>{msg.content}</p>
                             <p className="message-time">
-                                {new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                {msg.createdAt ? new Date(msg.createdAt).toLocaleString('vi-VN', {
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                    hour12: false
+                                }) : 'Unknown Time'}
                             </p>
                         </div>
-                    </div>
+                    </li>
                 ))}
-                {/* Phần tử ẩn để cuộn đến */}
                 <div ref={messagesEndRef} />
-            </div>
+            </ul>
+
+
+            {/* Đưa input tin nhắn nằm dưới cùng danh sách tin nhắn */}
             <div className="chat-input">
                 <input
                     type="text"
-                    value={messageInput}
-                    onChange={e => setMessageInput(e.target.value)}
-                    onKeyDown={e => e.key === 'Enter' && sendMessage()}
-                    placeholder={selectedUser ? "Enter your message..." : "Please select a recipient to start chatting"}
-                    disabled={!selectedUser}
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
+                    placeholder="Type your message"
                 />
-                <button onClick={sendMessage} disabled={!isConnected || !selectedUser}>Send</button>
+                <button onClick={sendMessage}>Send</button>
             </div>
         </div>
     );
