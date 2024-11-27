@@ -1,6 +1,6 @@
 import React from 'react';
 import { avatarBaseUrl } from '../../../services/Constants';
-import '../styles.css'; // Import CSS
+import '../styles.css';
 
 const ChatInformation = ({ selectedFriend, toggleNotification, isNotificationEnabled }) => {
     return (

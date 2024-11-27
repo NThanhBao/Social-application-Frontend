@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import ChatSidebar from './ChatSidebar';
 import ChatMessages from './ChatMessages';
-import ChatInformation from './ChatInformation'; // Import ChatInformation
+import ChatInformation from './ChatInformation';
 import { connectWebSocket, sendMessage } from '../../../services/WebSocketService';  
 import '../styles.css'; 
 
@@ -13,7 +13,7 @@ const ChatComponent = () => {
     const [content, setContent] = useState('');
     const [recipientId, setRecipientId] = useState('');
     const [friends, setFriends] = useState([]);
-    const [selectedFriend, setSelectedFriend] = useState(null); // State cho bạn bè được chọn
+    const [selectedFriend, setSelectedFriend] = useState(null);
     const userId = localStorage.getItem('userId');
 
     useEffect(() => {
@@ -125,7 +125,7 @@ const ChatComponent = () => {
             {selectedFriend && (
                 <div className="chat-information">
                     <ChatInformation 
-                        selectedFriend={selectedFriend} // Truyền thông tin bạn bè được chọn
+                        selectedFriend={selectedFriend}
                     />
                 </div>
             )}

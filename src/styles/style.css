@@ -173,9 +173,9 @@
 
 
 
-  /* Thiết lập kiểu dáng của thanh cuộn */
+  /* kiểu dáng của thanh cuộn */
 ::-webkit-scrollbar {
-  width: 8px; /* Độ rộng của thanh cuộn */
+  width: 8px;
 }
 
 /* Màu nền của thanh cuộn */
@@ -186,7 +186,7 @@
 /* Màu của thanh cuộn */
 ::-webkit-scrollbar-thumb {
   background: #888;
-  border-radius: 4px; /* Độ cong của các góc thanh cuộn */
+  border-radius: 4px;
 }
 
 /* Hover state của thanh cuộn */

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { avatarBaseUrl } from '../../../services/Constants';
-import '../styles.css'; // Import CSS
+import '../styles.css';
 
 const ChatSidebar = ({ friends, newMessages, handleFriendSelect }) => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -11,9 +11,7 @@ const ChatSidebar = ({ friends, newMessages, handleFriendSelect }) => {
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
-            // Thực hiện tìm kiếm tại đây nếu cần
             console.log(`Tìm kiếm cho: ${searchTerm}`);
-            // Có thể thêm logic tìm kiếm thực tế tại đây
         }
     };
 
@@ -31,7 +29,7 @@ const ChatSidebar = ({ friends, newMessages, handleFriendSelect }) => {
                 value={searchTerm}
                 onChange={handleSearchChange}
                 onKeyDown={handleKeyDown}
-                className="search-input" // Bạn có thể thêm CSS cho ô nhập tìm kiếm
+                className="search-input"
             />
             <ul className="chat-list">
                 {filteredFriends.map(friend => (

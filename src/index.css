@@ -12,9 +12,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(212, 223, 235);
+  /* background-color: rgb(212, 223, 235); */
   font-family: revert;
-  /* background-color: rgb(249, 249, 249); */
+  background-color: rgb(249, 249, 249);
 }
 
 code {
